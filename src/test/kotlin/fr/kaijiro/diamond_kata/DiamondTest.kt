@@ -7,9 +7,11 @@ import org.junit.jupiter.api.Test
 class DiamondTest {
 
     @Test
-    internal fun drawDiamondWithLetterA() {
+    internal fun `diamond for letter A should be just a single letter A`() {
         val diamondDrawer = DiamondDrawer()
         val diamondDrawn = diamondDrawer.drawForLetter('A')
         assertThat(diamondDrawn).isEqualTo("A")
     }
+
+
 }
