@@ -30,7 +30,9 @@ class DiamondTest {
     @Test
     internal fun `diamond for letter C should be a diamond with A B and C letters`() {
         val diamondDrawer = DiamondDrawer()
+
         val diamondDrawn = diamondDrawer.drawForLetter('C')
+
         val diamondExpected = File("src/test/resources/diamondC.txt").readText(Charset.defaultCharset())
         assertThat(diamondDrawn).isEqualTo(diamondExpected)
     }
