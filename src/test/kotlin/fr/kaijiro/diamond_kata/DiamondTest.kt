@@ -10,18 +10,18 @@ class DiamondTest {
 
     @Test
     internal fun `diamond for letter A should be just a single letter A`() {
-        val diamondDrawer = DiamondDrawer()
+        val diamond = Diamond.of('A')
 
-        val diamondDrawn = diamondDrawer.drawForLetter('A')
+        val diamondDrawn = diamond.toString()
 
         assertThat(diamondDrawn).isEqualTo("A")
     }
 
     @Test
     internal fun `diamond for letter B should be a diamond with A and B letters`() {
-        val diamondDrawer = DiamondDrawer()
+        val diamond = Diamond.of('B')
 
-        val diamondDrawn = diamondDrawer.drawForLetter('B')
+        val diamondDrawn = diamond.toString()
 
         val diamondExpected = File("src/test/resources/diamondB.txt").readText(Charset.defaultCharset())
         assertThat(diamondDrawn).isEqualTo(diamondExpected)
@@ -29,9 +29,9 @@ class DiamondTest {
 
     @Test
     internal fun `diamond for letter C should be a diamond with A B and C letters`() {
-        val diamondDrawer = DiamondDrawer()
+        val diamond = Diamond.of('C')
 
-        val diamondDrawn = diamondDrawer.drawForLetter('C')
+        val diamondDrawn = diamond.toString()
 
         val diamondExpected = File("src/test/resources/diamondC.txt").readText(Charset.defaultCharset())
         assertThat(diamondDrawn).isEqualTo(diamondExpected)

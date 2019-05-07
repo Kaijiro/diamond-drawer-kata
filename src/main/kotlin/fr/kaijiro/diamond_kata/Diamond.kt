@@ -1,8 +1,9 @@
 package fr.kaijiro.diamond_kata
 
-class DiamondDrawer {
-    fun drawForLetter(character: Char): String {
-        if(character == 'C'){
+class Diamond private constructor(private val character: Char) {
+
+    override fun toString(): String {
+        if(this.character == 'C'){
             return buildString {
                 appendln("  A")
                 appendln(" B B")
@@ -12,7 +13,7 @@ class DiamondDrawer {
             }
         }
 
-        if(character == 'B'){
+        if(this.character == 'B'){
             return buildString {
                 appendln(" A")
                 appendln("B B")
@@ -21,5 +22,10 @@ class DiamondDrawer {
         }
 
         return "A"
+    }
+
+
+    companion object {
+        fun of(character: Char): Diamond = Diamond(character)
     }
 }
