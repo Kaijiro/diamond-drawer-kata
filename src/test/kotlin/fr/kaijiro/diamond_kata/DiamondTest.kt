@@ -7,7 +7,9 @@ import org.junit.jupiter.api.Test
 class DiamondTest {
 
     @Test
-    internal fun `test env should be running`() {
-        assertThat(true).isTrue()
+    internal fun drawDiamondWithLetterA() {
+        val diamondDrawer = DiamondDrawer()
+        val diamondDrawn = diamondDrawer.drawForLetter('A')
+        assertThat(diamondDrawn).isEqualTo("A")
     }
 }
