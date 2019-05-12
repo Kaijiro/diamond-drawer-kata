@@ -36,4 +36,14 @@ class DiamondTest {
         val diamondExpected = File("src/test/resources/diamondC.txt").readText(Charset.defaultCharset())
         assertThat(diamondDrawn).isEqualTo(diamondExpected)
     }
+
+    @Test
+    internal fun `diamond for letter D should be a diamond with A B C and D letters`() {
+        val diamond = Diamond.of('D')
+
+        val diamondDrawn = diamond.toString()
+
+        val diamondExpected = File("src/test/resources/diamondD.txt").readText(Charset.defaultCharset())
+        assertThat(diamondDrawn).isEqualTo(diamondExpected)
+    }
 }

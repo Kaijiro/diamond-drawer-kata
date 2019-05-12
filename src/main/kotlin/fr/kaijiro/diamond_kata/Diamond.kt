@@ -3,6 +3,18 @@ package fr.kaijiro.diamond_kata
 class Diamond private constructor(private val character: Char) {
 
     override fun toString(): String {
+        if(this.character == 'D'){
+            return buildString {
+                appendln("   A")
+                appendln("  B B")
+                appendln(" C   C")
+                appendln("D     D")
+                appendln(" C   C")
+                appendln("  B B")
+                append("   A")
+            }
+        }
+
         if(this.character == 'C'){
             return buildString {
                 appendln("  A")
