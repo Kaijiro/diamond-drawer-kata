@@ -43,6 +43,16 @@ class Diamond private constructor(private val character: Char) {
     }
 
     companion object {
-        fun of(character: Char): Diamond = Diamond(character.toUpperCase())
+        fun of(character: Char): Diamond {
+            if(character in 'a'..'z'){
+                return Diamond(character.toUpperCase())
+            }
+
+            if(character < 'A' || character > 'Z'){
+                throw IllegalArgumentException()
+            }
+
+            return Diamond(character)
+        }
     }
 }

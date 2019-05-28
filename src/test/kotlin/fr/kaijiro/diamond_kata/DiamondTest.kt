@@ -1,7 +1,10 @@
 package fr.kaijiro.diamond_kata
 
-import org.assertj.core.api.Assertions.*
+import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 import java.io.File
 import java.nio.charset.Charset
 
@@ -55,5 +58,13 @@ class DiamondTest {
 
         val diamondExpected = File("src/test/resources/diamondC.txt").readText(Charset.defaultCharset())
         assertThat(diamondDrawn).isEqualTo(diamondExpected)
+    }
+
+    @ParameterizedTest
+    @ValueSource(chars = ['1', ',', '}'])
+    internal fun `diamond should only be instantiated from letters`(character: Char) {
+        assertThatThrownBy {
+            Diamond.of(character)
+        } .isInstanceOf(IllegalArgumentException::class.java)
     }
 }
