@@ -20,27 +20,24 @@ class Diamond private constructor(private val character: Char) {
         val offset = character.toInt() - characterCode
         val character = characterCode.toChar()
 
-        append(addSpaces(offset))
+        addSpaces(offset)
 
         if (characterCode == 'A'.toInt()) {
             appendln('A')
         } else {
             append(character)
-            append(addSpaces(calculateSpaceBetweenLetters(characterCode)))
+            addSpaces(calculateSpaceBetweenLetters(characterCode))
             appendln(character)
         }
     }
 
-    private fun calculateSpaceBetweenLetters(characterCode: Int) = -1 + 2 * (characterCode - 'A'.toInt())
-
-    private fun addSpaces(spacesNumber: Int): String {
-        var spacesString = ""
+    private fun StringBuilder.addSpaces(spacesNumber: Int) {
         for(i in 0 until spacesNumber){
-            spacesString += " "
+            append(" ")
         }
-
-        return spacesString
     }
+
+    private fun calculateSpaceBetweenLetters(characterCode: Int) = -1 + 2 * (characterCode - 'A'.toInt())
 
     companion object {
         fun of(character: Char): Diamond {
