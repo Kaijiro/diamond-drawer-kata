@@ -47,6 +47,6 @@ class Diamond private constructor(private val character: Char) {
 
 
     companion object {
-        fun of(character: Char): Diamond = Diamond(character)
+        fun of(character: Char): Diamond = Diamond(character.toUpperCase())
     }
 }
