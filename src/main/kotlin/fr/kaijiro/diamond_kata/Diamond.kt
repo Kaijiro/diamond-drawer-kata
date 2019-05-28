@@ -3,38 +3,35 @@ package fr.kaijiro.diamond_kata
 class Diamond private constructor(private val character: Char) {
 
     override fun toString(): String {
-        if(character == 'A'){
-            return "A"
-        }
-
         return buildString {
-            for(characterCode in 'A'.toInt()..character.toInt()){
-                val offset = character.toInt() - characterCode
-                append(addSpaces(offset))
+            val characterCode = character.toInt()
 
-                if(characterCode == 'A'.toInt()){
-                    appendln('A')
-                } else {
-                    append(characterCode.toChar())
-                    append(addSpaces(-1 + 2 * (characterCode - 'A'.toInt())))
-                    appendln(characterCode.toChar())
-                }
+            for(actualCharacterCode in 'A'.toInt()..characterCode){
+                addDiamondLayer(actualCharacterCode)
             }
 
-            for(characterCode in (character.toInt() - 1) downTo 'A'.toInt()){
-                val offset = character.toInt() - characterCode
-                append(addSpaces(offset))
-
-                if(characterCode == 'A'.toInt()){
-                    append('A')
-                } else {
-                    append(characterCode.toChar())
-                    append(addSpaces(-1 + 2 * (characterCode - 'A'.toInt())))
-                    appendln(characterCode.toChar())
-                }
+            for(actualCharacterCode in (characterCode - 1) downTo 'A'.toInt()){
+                addDiamondLayer(actualCharacterCode)
             }
+        }.trimEnd()
+    }
+
+    private fun StringBuilder.addDiamondLayer(characterCode: Int) {
+        val offset = character.toInt() - characterCode
+        val character = characterCode.toChar()
+
+        append(addSpaces(offset))
+
+        if (characterCode == 'A'.toInt()) {
+            appendln('A')
+        } else {
+            append(character)
+            append(addSpaces(calculateSpaceBetweenLetters(characterCode)))
+            appendln(character)
         }
     }
+
+    private fun calculateSpaceBetweenLetters(characterCode: Int) = -1 + 2 * (characterCode - 'A'.toInt())
 
     private fun addSpaces(spacesNumber: Int): String {
         var spacesString = ""
@@ -44,7 +41,6 @@ class Diamond private constructor(private val character: Char) {
 
         return spacesString
     }
-
 
     companion object {
         fun of(character: Char): Diamond = Diamond(character.toUpperCase())
